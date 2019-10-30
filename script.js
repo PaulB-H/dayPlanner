@@ -14,7 +14,7 @@ $(function generatePage() {
         headerDate.html(date.format("ddd &#183; MMM Do &#183; YYYY &#183; HH:mm:ssa"));
     };
 
-    $(document).ready(function(){
+    $(document).ready(function (){
         headerDate = $('#headerDate')
         update();
         setInterval(update, 1000);
@@ -26,24 +26,23 @@ $(function generatePage() {
                 <h1 class="display-5">Day Planner</h1>
                 <p id="headerDate" class="lead">${headerDate}</p>
                 <p id="currentDay" class="lead"></p>
-            </header>`)
+            </header>
+        `)
     };
 
     generateHeader();
 
+    // GENERATE TIME BLOCKS
     for (var i = 0, l = `${timeBlocksArray.length}`; i < l; i++) {
-
         // timeBlocksArray[i] 
-        moment().format("HH:mm");
-
+        var timeblk = moment().format(`${timeBlocksArray[i]}`);
         // EXAMPLE TIME COMPARISON 
-        // moment('2010-10-20').isBefore('2010-10-21'); = true
-
+       // moment('2010-10-20').isBefore('2010-10-21'); = true
         $("#timeblockContainer").append(`
             <div id="timeblockContainer" class="container">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                <span class="input-group-text blockHead">${timeBlocksArray[i]}</span>
+                <span class="input-group-text blockHead${i}">${timeblk}</span>
             </div>
             <input class="form-control past present future textArea${i}" type="text" placeholder="Default input">
                 <div class="input-group-append">
@@ -52,6 +51,26 @@ $(function generatePage() {
             </div>
         `);
     };
+
+    //removeClassFunction
+
+    for (var i = 0, l = `${timeBlocksArray.length}`; i < l; i++) {
+        var currentMoment = moment().format("HH:mm");
+        // var headMoment = $(`.blockHead${[i]}`).text();
+
+        if (moment(`.blockHead${[i]}`).isAfter(currentMoment) == false){
+            console.log($(`.blockHead${[i]}`));
+            $(`.textArea${[i]}`).removeClass("past");
+        }
+        // else if ( this = that){
+
+        // };
+    };
+
+
+
+
+//END generatePage()
 });
 
 

@@ -1,4 +1,4 @@
-# Third-Party APIs: Day Planner
+# Day Planner
 ### Paul Bernard-Hall
 
 ## Goal:

@@ -2,23 +2,33 @@ $(function generateTimeblocks() {
     console.log( "ready!" );
 });
 
-
-var now = moment();
-
-console.log
-
 const timeBlocksArray = ["09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"];
 
 $(function generatePage() {
-    var docHeader = moment().format("ddd &#183; MMM Do &#183; YYYY &#183; HH:mm a");
+
+    var headerDate = null;
+    var date = null;
+
+    var update = function () {
+        date = moment(new Date())
+        headerDate.html(date.format("ddd &#183; MMM Do &#183; YYYY &#183; HH:mm:ssa"));
+    };
+
+    $(document).ready(function(){
+        headerDate = $('#headerDate')
+        update();
+        setInterval(update, 1000);
+    });
+
     function generateHeader() {
         $("#headerContainer").prepend(`
             <header class="jumbotron">
                 <h1 class="display-5">Day Planner</h1>
-                <p class="lead">${docHeader}</p>
+                <p id="headerDate" class="lead">${headerDate}</p>
                 <p id="currentDay" class="lead"></p>
             </header>`)
     };
+
     generateHeader();
 
     for (var i = 0, l = `${timeBlocksArray.length}`; i < l; i++) {
@@ -48,7 +58,7 @@ $(function generatePage() {
 /*
 SCRATCHSPACE
 
-Next step build function to compare blockHead to current time and remove past || present || future
+NEED TO build function to compare blockHead to current time and remove past || present || future
 
 
  */

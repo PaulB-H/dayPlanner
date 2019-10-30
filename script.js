@@ -5,7 +5,7 @@ $(function generateTimeblocks() {
 const timeBlocksArray = ["09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"];
 
 $(function generatePage() {
-
+// debugger;
     var headerDate = null;
     var date = null;
 
@@ -44,7 +44,7 @@ $(function generatePage() {
                 <div class="input-group-prepend">
                 <span class="input-group-text blockHead${i}">${timeblk}</span>
             </div>
-            <input class="form-control past present future textArea${i}" type="text" placeholder="Type here:">
+            <input class="form-control textArea${i}" type="text" placeholder="Type here:">
                 <div class="input-group-append">
                     <button class="btn btn-outline-secondary saveButton${i}" type="button"><i class="fas fa-save"></i></button>
                 </div>
@@ -60,44 +60,31 @@ $(function generatePage() {
     // };
 
     for (var i = 0, l = `${timeBlocksArray.length}`; i < l; i++) {
-        //var currentMoment = moment().format("HH:mm");
+        // $(`.textArea${[i]}`)
+        // $(`.blockHead${[i]}`)
+        // console.log("Future triggered");
 
-        var currentMoment = moment().format("HH:mm");
+        console.log ($(`.blockHead${[i]}`)[0].innerHTML);
 
+        var currentMoment = moment().format("HH");
 
-        // This hamstring function is to take the blockHead Hour which is in HH:mm format, and take the HH off and store it as a string so I can compare the Hour only to the current hour to determine if it needs a present class
-        function hamString() {
-            var str = $(`.blockHead${[i]}`).text();
-            console.log(str);
-            var res = str.substring(0, 2);
-            console.log(res);
-        };
+        var headMoment = moment().format($(`.blockHead${[i]}`)[0].innerHTML);
+        var str = headMoment;
+        var res = str.substring(0, 2);
 
-        hamString();
-
-        // var headMoment = $(`.blockHead${[i]}`).text();
-
-        if (moment(`.blockHead${[i]}`).isAfter(currentMoment) == false){
-            console.log($(`.blockHead${[i]}`));
-            $(`.textArea${[i]}`).removeClass("past");
+        if (res < currentMoment){
+            console.log("Triggered Past");
+            $(`.textArea${[i]}`).addClass("past");
         }
-        else if (moment(`.blockHead${[i]}`).isAfter(currentMoment) == true){
-            console.log($(`.blockHead${[i]}`));
-            $(`.textArea${[i]}`).removeClass("future");
+        else if (res > currentMoment){
+            console.log("Triggered Future");
+            $(`.textArea${[i]}`).addClass("future");
         }
-        else if (moment(`.blockHead${[i]}`) == currentMoment){
-            console.log("You found me again!");
+        else {
+            console.log("Triggered present");
+            $(`.textArea${[i]}`).addClass("present");
         };
     };
 
 //END generatePage()
 });
-
-
-/*
-SCRATCHSPACE
-
-NEED TO build function to compare blockHead to current time and remove past || present || future
-
-
- */

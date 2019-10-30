@@ -54,10 +54,26 @@ $(function generatePage() {
 
     //removeClassFunction
 
+    // To set present class:
+    // if (current Hour == blockHead hour) {
+    //      add class present
+    // };
+
     for (var i = 0, l = `${timeBlocksArray.length}`; i < l; i++) {
         //var currentMoment = moment().format("HH:mm");
 
         var currentMoment = moment().format("HH:mm");
+
+
+        // This hamstring function is to take the blockHead Hour which is in HH:mm format, and take the HH off and store it as a string so I can compare the Hour only to the current hour to determine if it needs a present class
+        function hamString() {
+            var str = $(`.blockHead${[i]}`).text();
+            console.log(str);
+            var res = str.substring(0, 2);
+            console.log(res);
+        };
+
+        hamString();
 
         // var headMoment = $(`.blockHead${[i]}`).text();
 
@@ -68,6 +84,9 @@ $(function generatePage() {
         else if (moment(`.blockHead${[i]}`).isAfter(currentMoment) == true){
             console.log($(`.blockHead${[i]}`));
             $(`.textArea${[i]}`).removeClass("future");
+        }
+        else if (moment(`.blockHead${[i]}`) == currentMoment){
+            console.log("You found me again!");
         };
     };
 

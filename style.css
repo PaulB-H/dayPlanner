@@ -19,11 +19,12 @@ body {
 } */
 
 .jumbotron {
+  padding: 10px;
   text-align: center;
   background-color: transparent;
   color: black;
   border-radius: 0;
-  border-bottom: 10px solid black;
+  border-bottom: 5px solid black;
 }
 
 .description{

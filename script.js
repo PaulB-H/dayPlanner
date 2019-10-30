@@ -12,6 +12,10 @@ const timeBlocksArray = ["09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "
 for (var i = 0, l = `${timeBlocksArray.length}`; i < l; i++) {
     // timeBlocksArray[i] 
     moment().format("HH:mm");
+
+    // EXAMPLE TIME COMPARISON 
+    // moment('2010-10-20').isBefore('2010-10-21'); = true
+    
     $("#timeblockContainer").append(` 
 
     <div class="input-group mb-3">

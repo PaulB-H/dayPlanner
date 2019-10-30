@@ -44,7 +44,7 @@ $(function generatePage() {
                 <div class="input-group-prepend">
                 <span class="input-group-text blockHead${i}">${timeblk}</span>
             </div>
-            <input class="form-control past present future textArea${i}" type="text" placeholder="Default input">
+            <input class="form-control past present future textArea${i}" type="text" placeholder="Type here:">
                 <div class="input-group-append">
                     <button class="btn btn-outline-secondary saveButton${i}" type="button"><i class="fas fa-save"></i></button>
                 </div>
@@ -55,20 +55,21 @@ $(function generatePage() {
     //removeClassFunction
 
     for (var i = 0, l = `${timeBlocksArray.length}`; i < l; i++) {
+        //var currentMoment = moment().format("HH:mm");
+
         var currentMoment = moment().format("HH:mm");
+
         // var headMoment = $(`.blockHead${[i]}`).text();
 
         if (moment(`.blockHead${[i]}`).isAfter(currentMoment) == false){
             console.log($(`.blockHead${[i]}`));
             $(`.textArea${[i]}`).removeClass("past");
         }
-        // else if ( this = that){
-
-        // };
+        else if (moment(`.blockHead${[i]}`).isAfter(currentMoment) == true){
+            console.log($(`.blockHead${[i]}`));
+            $(`.textArea${[i]}`).removeClass("future");
+        };
     };
-
-
-
 
 //END generatePage()
 });

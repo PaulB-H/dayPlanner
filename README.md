@@ -16,3 +16,6 @@
 * Each timeblock is color coded to indicate whether it is in a past, present, or future hour.
 
 Use [Moment.js](https://momentjs.com/) library to work with date and time.
+
+// future ideas for this:
+Function run on interval 30 sec IF content of the text box's !== the value for that text box in local storage, SET background-color of save-button for that text box = red

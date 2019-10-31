@@ -40,11 +40,11 @@ $(function generatePage() {
        // moment('2010-10-20').isBefore('2010-10-21'); = true
         $("#timeblockContainer").append(`
             <div id="timeblockContainer" class="container">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                <span class="input-group-text blockHead${i}">${timeblk}</span>
-            </div>
-            <input class="form-control textArea${i}" type="text" placeholder="Type here:">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text blockHead${i}">${timeblk}</span>
+                </div>
+                <input class="form-control textArea${i}" type="text" placeholder="Type here:">
                 <div class="input-group-append">
                     <button class="btn btn-outline-secondary saveButton${i}" type="button"><i class="fas fa-save"></i></button>
                 </div>
